@@ -6,19 +6,20 @@ interface Options {
     systemInstruction?: string;
 }
 
-export const basicPromptUseCase = async (
+export const basicPromptStreamUseCase = async (
     ai: GoogleGenAI,
     basicPromptDto: BasicPromptDto,
     options?: Options,
 
 ) => {
     const { model = 'gemini-2.5-flash', systemInstruction = 'Responde unicamente en espanol y usando markdown' } = options ?? {};
-    const response = await ai.models.generateContent({
+    const response = await ai.models.generateContentStream({
         model: model,
         contents: basicPromptDto.prompt,
         config: {
             systemInstruction: systemInstruction,
         }
     });
-    return response.text;
+
+    return response;
 }
