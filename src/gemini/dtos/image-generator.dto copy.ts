@@ -1,6 +1,6 @@
-import { IsArray, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsArray, IsNotEmpty, IsOptional, IsString, IsUUID } from "class-validator";
 
-export class BasicPromptDto {
+export class ImageGeneratorDto {
     @IsString()
     @IsNotEmpty()
     prompt: string;
@@ -8,4 +8,5 @@ export class BasicPromptDto {
     @IsArray()
     @IsOptional()
     files: Express.Multer.File[];
+
 }
