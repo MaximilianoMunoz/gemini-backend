@@ -8,6 +8,10 @@ import { chatPromptStreamUseCase } from "./use-cases/chat-prompt-stream.use-case
 import { ChatPromptDto } from './dtos/chat-prompt.dto';
 import { ImageGeneratorDto } from './dtos/image-generator.dto copy';
 import { imageGeneratorUseCase } from "./use-cases/image-generator.use-case";
+import { getPokemonHelpUseCase } from "./use-cases/get-pokemon-help.use-case";
+import { getTriviaQuestionUseCase } from "./use-cases/get-trivia-question.use-case";
+import { PokemonHelperDto } from "./dtos/pokemon-helper.dto";
+import { TriviaQuestionDto } from "./dtos/trivia-question.dto";
 
 @Injectable()
 export class GeminiService {
@@ -43,5 +47,13 @@ export class GeminiService {
 
     async imageGeneration(imageGeneratorDto: ImageGeneratorDto) {
         return imageGeneratorUseCase(this.ai, imageGeneratorDto);
+    }
+
+    getPokemonHelp(pokemonHelperDto: PokemonHelperDto) {
+        return getPokemonHelpUseCase(this.ai, pokemonHelperDto);
+    }
+
+    getTriviaQuestion(triviaQuestionDto: TriviaQuestionDto) {
+        return getTriviaQuestionUseCase(this.ai, triviaQuestionDto);
     }
 }
